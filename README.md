@@ -6,7 +6,7 @@ This is my attempt at the cloud resume challenge in AWS. The Cloud Resume Challe
 ![Architecture Image](/architecture-image)
 
 ## Tech Stack
-- S3
+- S3 (storage)
 - AWS CloudFront (CDN)
 - ACM (Certificate Manager)
 - Route53 (DNS)
