@@ -15,4 +15,4 @@ This is my attempt at the cloud resume challenge in AWS. The Cloud Resume Challe
 - GitHub Actions (CI/CD)
 
 ## YouTube Review
-[Link to YouTube Review](link_to_youtube_review)
+[Link to YouTube Review](https://youtu.be/Xjm6hzc570w?si=2r-OSq1Lttq-lHbY)
