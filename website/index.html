@@ -3,277 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+    <title>Jonathan Halfhide | Resume</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #333;
-            color: #fff;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-color: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.95);
         }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-color); }
+
+        /* --- Header --- */
         header {
             text-align: center;
-            padding: 20px;
-            background-image: url('/header2.jpg');
-            background-size: cover;
-            background-position: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('/header2.jpg') center/cover no-repeat;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        nav a {
-            margin-right: 20px;
-            text-decoration: none;
-            color: #fff;
-        }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: #444;
-            border-radius: 5px;
-        }
+
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 150px; height: 150px;
             border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            border: 4px solid var(--accent-color);
             margin: 0 auto 20px;
             display: block;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
+
         .name {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Layout --- */
+        main { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+
+        section {
+            padding: 40px;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h3 { margin-bottom: 5px; color: #fff; }
+
+        /* --- Grids & Lists --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        ul { list-style: none; padding: 0; }
+        ul li {
             margin-bottom: 10px;
-            color: #0000;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-muted);
         }
-        .contact {
-            text-align: center;
-            margin-top: 50px;
+        ul li::before {
+            content: "→";
+            position: absolute; left: 0;
+            color: var(--accent-color);
         }
-        .contact a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
+
+        .underline { color: var(--accent-color); text-decoration: underline; }
+
+        /* --- Job & Education Styling --- */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-top: 25px;
         }
+
+        .item-subheader { color: var(--accent-color); font-weight: bold; }
+        .item-date { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+
+        /* --- Visitor Counter --- */
+        .counter-container {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .counter-number {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 18px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 6px;
+            border: 1px solid var(--accent-color);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #222;
-            color: #fff;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        footer a {
-            color: #fff;
-            text-decoration: none;
-        }
-      .skills-container {
-          display: flex;
-          justify-content: space-around;
-      }
-      .column {
-          flex: 1;
-      }
-      ul {
-          list-style-type: disc;
-          color: #fff; /* Set the color of the bullet points to white */
-      }
-      ul li {
-          margin-bottom: 10px;
-      }
-      .certifications-container {
-          display: flex;
-          justify-content: space-around;
-      }
 
-      .column {
-          flex: 1;
-      }
-
-      ul {
-          list-style-type: disc;
-          color: white;
-      }
-
-      ul li {
-          margin-bottom: 10px;
-      }
-      .underline {
-          text-decoration: underline;
-          color: white;
-      }
-        .contact a {
-          text-decoration: underline;
-        }
-      .counter-number {
-          padding-bottom: 10px; 
-      }
+        footer a { color: var(--text-main); text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
 
-<header>
+<nav>
+    <a href="#about-me">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#work-experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<header id="top">
     <img class="profile-img" src="/headshot.jpg" alt="Jonathan Halfhide">
     <div class="name">Jonathan Halfhide</div>
-    <nav>
-        <a href="#about-me">About Me</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#projects">Projects</a>
-        <a href="#work-experience">Work Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <p style="letter-spacing: 1px;">Linux/AWS Systems Administrator</p>
 </header>
 
 <main>
     <section id="about-me">
         <h2>About Me</h2>
-      <p>Current Linux/AWS Systems Administrator with a bachelor's <a href="#education" class=underline>degree<a/> in Network Engineering and Security, active security clearance, and numerous industry-recognized <a href="#certifications" class="underline">certifications</a> such as the AWS Solutions Architect Professional, CCNA, Red Hat Certified Engineer (RHCE), CompTIA Security+, and more. Proficient in AWS, Linux/UNIX administration, python/bash/ansible for scripting, automation and programming, cybersecurity, DevOps (IaC, CI/CD, Git, Agile) and networking. Professional <a href="#work-experience" class="underline">experience</a> includes securing and supporting operating systems, software applications, networks, databases, and equipment for numerous federal contracts and organizations (DoD, NASA, FAA, etc.) along with private organizations in the aerospace, defense, and health care industries. Personally active as an open source Python <a href="https://github.com/JGGHalfhide" class="underline">developer</a> and avid Linux enthusiast.</p>
+        <p>Current cleared Linux/AWS Systems Administrator with extensive <a href="#work-experience" class="underline">experience</a> managing mission-critical infrastructure for defense, aerospace, and private operations. I currently hold many industry recognized <a href="#certifications" class="underline">certifications</a> such as the AWS Solutions Architect Professional, Red Hat Certified Engineer, Certified Kubernetes Administrator, CCNA, and Security+ in addition to a bachelor's <a href="#education" class="underline">degree</a> in Network Engineering and Security. Expertise includes AWS engineering, Red Hat Linux administration, automation (Python, Bash, Ansible), and infrastructure-as-code. Personally active as an open source Python <a href="https://github.com/JGGHalfhide" class="underline">developer</a> and Linux enthusiast.</p>
     </section>
 
-  <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-container">
-          <div class="column">
-              <ul>
-                  <li>Cloud (AWS/Azure)</li>
-                  <li>Linux</li>
-                  <li>Networking</li>
-                  <li>Programming/Scripting/Automation (Python, Bash, Powershell, Ansible)</li>
-              </ul>
-          </div>
-          <div class="column">
-              <ul>
-                  <li>System Administration</li>
-                  <li>Cybersecurity</li>
-                  <li>Observability (CloudWatch/Prometheus/Grafana)</li>
-                  <li>DevOps (Terraform/CloudFormation/CDK, CI/CD, Git, Agile)</li>
-              </ul>
-          </div>
-      </div>
-  </section>
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="grid-container">
+            <ul>
+                <li>Cloud (AWS/Azure)</li>
+                <li>Linux Administration</li>
+                <li>Networking</li>
+                <li>Python, Bash, Powershell, Ansible</li>
+            </ul>
+            <ul>
+                <li>Kubernetes</li>
+                <li>Cybersecurity</li>
+                <li>Observability (CloudWatch/Prometheus)</li>
+                <li>DevOps (Terraform, CI/CD, Git)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="grid-container">
+            <ul>
+                <li>AWS Solutions Architect - Professional</li>
+                <li>AWS DevOps Engineer - Professional</li>
+                <li>AWS SysOps Administrator</li>
+                <li>Cisco Certified Network Associate (CCNA)</li>
+            </ul>
+            <ul>
+                <li>Certified Kubernetes Administrator (CKA)</li>
+                <li>Red Hat Certified Engineer (RHCE/RHCSA)</li>
+                <li>CompTIA Security+ / Linux+ / Network+ / Cloud+</li>
+                <li>ITIL v4 Foundation</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="https://github.com/JGGHalfhide/BitcoinVS" class="underline">Web App Development</a></li>
+            <li><a href="https://github.com/JGGHalfhide/PythonPocketbook" class="underline">Desktop Application Development</a></li>
+            <li><a href="https://github.com/JGGHalfhide/CloudResumeChallengeAWS" class="underline">AWS Full Stack</a></li>
+        </ul>
+    </section>
+
+        <section id="work-experience">
+        <h2>Relevant Work Experience</h2>
+        
+        <div class="item-header">
+            <h3>Systems Administrator</h3>
+            <span class="item-date">Jan 2025 – Present</span>
+        </div>
+        <div class="item-subheader">CACI International Inc. | Remote (FL)</div>
+        <ul>
+            <li>Engineer, manage, and optimize a hybrid AWS/on-premises Linux infrastructure with over 75 servers for the USMC.</li>
+            <li>Reduce AWS costs by $50K per month through service integrations, right-sizing, and environment optimization.</li>
+            <li>Implement IaC using Terraform, CloudFormation, and Ansible to automate 200+ resources across 4 environments.</li>
+            <li>Automate Red Hat Linux system administration (configuration, patching, hardening) using Bash, Ansible, Python.</li>
+            <li>Lead multi-tier (db, app, auth, web) cloud-to-cloud app migration, improving availability, reliability, and maintainability.</li>
+            <li>Build Kubernetes observability platform using Prometheus/Grafana, integrating AWS CloudWatch and SNS alerting.</li>
+            <li>Containerize workloads with Kubernetes/ECS for testing, administration, and legacy application support.</li>
+            <li>Provide AWS solutions architecture, engineering, and Linux systems administration for AI/ML teams and initiatives.</li>
+            <li>Support agile deployments through infrastructure provisioning, troubleshooting, and release implementations.</li>
+        </ul>
+
+        <div class="item-header">
+            <h3>Information Assurance Engineer</h3>
+            <span class="item-date">May 2024 – Jan 2025</span>
+        </div>
+        <div class="item-subheader">General Dynamics Mission Systems | Cape Canaveral, FL</div>
+        <ul>
+            <li>Administered mission-critical RHEL systems for the U.S. Navy, managing reliability, IAM, and configuration management.</li>
+            <li>Developed automated STIG hardening, patching, and vulnerability scanning workflows integrating Nessus for compliance.</li>
+            <li>Automated provisioning and configuration management using Ansible, Bash, and Python, reducing configuration drift.</li>
+            <li>Built Splunk dashboards for observability and alerting, reducing MTTR across compute, storage, and network layers.</li>
+        </ul>
+
+        <div class="item-header">
+            <h3>Systems Administrator</h3>
+            <span class="item-date">June 2023 – May 2024</span>
+        </div>
+        <div class="item-subheader">RGNext (Raytheon/General Dynamics) | Cape Canaveral, FL</div>
+        <ul>
+            <li>Administered mission-critical distributed Red Hat Linux/Unix infrastructure for DoD and commercial launch operations.</li>
+            <li>Engineered Bash and Python automation for monitoring and maintaining 40+ geographically dispersed sensor sites.</li>
+            <li>Performed system troubleshooting, configuration, and upgrades across application, database, and network layers.</li>
+            <li>Executed backup, security assessments, and vulnerability remediation to ensure compliance with DoD IA requirements.</li>
+        </ul>
+
+        <div class="item-header">
+            <h3>IP Network Operations Specialist</h3>
+            <span class="item-date">Feb 2023 – June 2023</span>
+        </div>
+        <div class="item-subheader">L3Harris Technologies | Melbourne, FL (Sub-Contract)</div>
+        <ul>
+            <li>Supported FAA telecommunications infrastructure maintaining 99.999% uptime SLA across 4000+ sites nationwide.</li>
+            <li>Resolved critical software, hardware, and networking incidents through coordination with carriers and internal teams.</li>
+            <li>Securely configured Cisco network infrastructure, supporting mission-critical air traffic communications.</li>
+        </ul>
+
+        <div class="item-header">
+            <h3>Network Operations Center Specialist II</h3>
+            <span class="item-date">June 2022 – Feb 2023</span>
+        </div>
+        <div class="item-subheader">Health First | Rockledge, FL</div>
+        <ul>
+            <li>Supported critical infrastructure for 4 hospitals and 60+ medical facilities with 24/7 incident response and management.</li>
+            <li>Developed Python automation for operational workflows including web scraping, data processing, and administration.</li>
+            <li>Managed 10,000+ Active Directory and Azure AD accounts, troubleshooting authentication and anomalous login activity.</li>
+        </ul>
+    </section>
 
 
-  <section id="certifications">
-      <h2>Certifications</h2>
-      <div class="certifications-container">
-          <div class="column">
-              <ul>
-                  <li>AWS Certified Solutions Architect - Associate</li>
-                  <li>AWS Certified SysOps Administrator</li>
-                  <li>AWS Certified Solutions Architect - Professional</li>
-                  <li>AWS Certified DevOps Engineer - Professional</li>
-              </ul>
-          </div>
-          <div class="column">
-              <ul>
-                  <li>CompTIA Cloud+/Linux+/Security+/Network+</li>
-                  <li>Red Hat Certified Engineer (RHCE)/System Administrator (RHCSA)</li>
-                  <li>Cisco Certified Network Associate (CCNA)</li>
-                  <li>ITIL v4 Foundation</li>
-              </ul>
-      </div>
-  </section>
+    <section id="education">
+        <h2>Education</h2>
+        
+        <div class="item-header">
+            <h3>MS, Computer Science</h3>
+            <span class="item-date">Expected 2026</span>
+        </div>
+        <div class="item-subheader">Western Governors University | Salt Lake City, Utah</div>
 
+        <div class="item-header" style="margin-top: 20px;">
+            <h3>BS, Network Engineering and Security</h3>
+            <span class="item-date">2023</span>
+        </div>
+        <div class="item-subheader">Western Governors University | Salt Lake City, Utah</div>
+    </section>
 
-  <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-          <li><a href="https://github.com/JGGHalfhide/BitcoinVS" style="color: white; text-decoration: underline;">Web App Development</a></li>
-          <li><a href="https://github.com/JGGHalfhide/PythonPocketbook" style="color: white; text-decoration: underline;">Desktop Application Development</a></li>
-          <li><a href="https://github.com/JGGHalfhide/CloudResumeChallengeAWS" style="color: white; text-decoration: underline;">AWS Full Stack</a></li>
-      </ul>
-  </section>
-
-
-    <section id="work-experience">
-    <h2>Work Experience</h2>
-    
-    <h3>Systems Administrator</h3>
-    <p><strong>Jan 2025 – Present</strong></p>
-    <p>CACI International Inc</p>
-    <p>Remote (FL)</p>
-    <ul>
-        <li>Architect, administer, and optimize AWS environments (EC2, Lambda, SNS, EventBridge, IAM, FSx, SageMaker).</li>
-        <li>Automate system administration workflows (patching, hardening, troubleshooting) with Bash, Ansible, and Python.</li>
-        <li>Implement IaC with Terraform, AWS CDK, CloudFormation, and Ansible to automate provisioning and configuration.</li>
-        <li>Lead multi-tier (db, app, auth) cloud-to-cloud application migrations, ensuring minimal downtime and improved scalability.</li>
-        <li>Build and maintain observability stack with Prometheus/Grafana, developing custom dashboards and SNS alerting.</li>
-        <li>Reduce AWS costs by $50K per month through service integrations, right-sizing, and environment optimization.</li>
-        <li>Containerize workloads with Docker for testing, streamlined package management, and legacy application support.</li>
-        <li>Support AI/ML initiatives on AWS by providing solutions architecture and systems administration for data science teams.</li>
-        <li>Enable Agile development lifecycles with Git-based version control and cross-functional team collaboration.</li>
-    </ul>
-
-    <h3>Information Assurance Engineer/Systems Administrator</h3>
-    <p><strong>May 2024 – Jan 2025</strong></p>
-    <p>General Dynamics - Mission Systems</p>
-    <p>Cape Canaveral, FL</p>
-    <ul>
-        <li>Maintained security controls and documentation to ensure infrastructure compliance without impacting uptime.</li>
-        <li>Automated hardening, patching, and vulnerability scans (STIGs, Nessus, etc.) to reduce drift and improve reliability.</li>
-        <li>Streamlined provisioning and configuration across environments with Ansible, Bash, Python, and PowerShell.</li>
-        <li>Served as SA for hybrid Windows/RHEL infrastructure, owning reliability, IAM, and configuration management.</li>
-        <li>Reduced MTTR through root-cause analysis across compute, storage, and network systems.</li>
-        <li>Scaled Splunk for observability, creating dashboards and alerts to accelerate incident response.</li>
-    </ul>
-
-    <h3>Systems Administrator</h3>
-    <p><strong>June 2023 – May 2024</strong></p>
-    <p>RGNext (Raytheon/General Dynamics)</p>
-    <p>Cape Canaveral, FL</p>
-    <ul>
-        <li>Automated systems administration workflows with Python, Bash, and PowerShell.</li>
-        <li>Administered Linux/Windows/Unix systems supporting Eastern Range launch operations—both public and private.</li>
-        <li>Performed hardware, software, and networking troubleshooting, configuration, installation, and upgrades.</li>
-        <li>Documented system events, performed backups, and conducted IA Assessments.</li>
-    </ul>
-
-    <h3>IP Network Operations Specialist</h3>
-    <p><strong>Feb 2023 – June 2023</strong></p>
-    <p>L3Harris Technologies - Contract</p>
-    <p>Melbourne, FL</p>
-    <ul>
-        <li>Provided support for FAA Telecommunications Infrastructure, ensuring 99.999% uptime across 4000+ sites.</li>
-        <li>Resolved software, hardware, and networking issues with local carriers and internal teams.</li>
-        <li>Troubleshot WAN/LAN protocols and securely configured Cisco routers, switches, and networking devices.</li>
-    </ul>
-
-    <h3>Network Operations Center Specialist II</h3>
-    <p><strong>June 2022 – Feb 2023</strong></p>
-    <p>Health First</p>
-    <p>Rockledge, FL</p>
-    <ul>
-        <li>Implemented Python scripts and programs for web scraping, data entry, and automation.</li>
-        <li>Supported critical infrastructure for 4 hospitals and 60+ medical facilities providing incident response/management.</li>
-        <li>Managed 10,000+ Active Directory/Azure AD accounts as well as troubleshot anomalous user login activity in Azure.</li>
-    </ul>
-</section>
-
-  <section id="education">
-      <h2>Education</h2>
-      <p><strong>Western Governors University - 2023</strong><br>Bachelor of Science - Network Engineering and Security</p>
-  </section>
-
-
-    <section class="contact">
-      <section id="contact">
+    <section id="contact" style="text-align: center;">
         <h2>Contact</h2>
         <p>You can reach me via email or connect with me on LinkedIn:</p>
-        <a href="mailto:JGGHalfhide@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/jonathan-halfhide">LinkedIn</a>
-        <div class="counter-number nav-item nav-link text-white-50 font-os font-size-16
-  active"></div>
+        <div style="margin: 25px 0;">
+            <a href="mailto:JGGHalfhide@gmail.com" class="underline" style="margin: 0 15px;">Email</a>
+            <a href="https://www.linkedin.com/in/jonathan-halfhide" class="underline" style="margin: 0 15px;">LinkedIn</a>
+        </div>
+        
+        <div class="counter-container">
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Unique Cloud Visitors</p>
+            <div class="counter-number"></div> </div>
     </section>
 </main>
 
-  <footer>
-      <a href="https://cloud-resume-challenege.s3.us-east-1.amazonaws.com/Jonathan%20Halfhide%20Resume.pdf" download>
-    Download Resume as PDF |
-</a>
-      <a href="https://github.com/JGGHalfhide">GitHub | </a>
-      <a href="#top">Back to Top</a>
-  </footer>
+<footer>
+    <a href="https://cloud-resume-challenege.s3.us-east-1.amazonaws.com/Jonathan%20Halfhide%20Resume.pdf" download>Download PDF Resume</a> | 
+    <a href="https://github.com/JGGHalfhide">GitHub Profile</a> | 
+    <a href="#top">Back to Top</a>
+    <p style="margin-top: 25px; font-size: 0.75rem; opacity: 0.6;">&copy; 2026 Jonathan Halfhide</p>
+</footer>
 
 <script src="/index.js"></script>
 </body>
 </html>
-
